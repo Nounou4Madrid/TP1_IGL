@@ -1,181 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-class VectorHelper
-{
-
-    private int[] tab1;
-    private int[] tab2;
-    private int n1;
-    private int n2;
-    public VectorHelper()
-    {
-
-    }
-    public int[] get_tab1()
-    {
-        return tab1;
-    }
-    public int[] get_tab2()
-    {
-        return tab2;
-    }
-
-    public int get_n1()
-    {
-        return n1;
-    }
-    public int get_n2()
-    {
-        return n2;
-    }
-
-    public void set_n1(int n)
-    {
-        n1 = n;
-    }
-    public void set_n2(int n)
-    {
-        n2 = n;
-    }
-
-
-
-
-    public void ecrire_tab1()
-    {
-        Console.WriteLine("les elelment de tableau sont :");
-
-        for (int i = 0; i < n1; i++)
+﻿/////////////////////////////////////////////////////////////////////
+        //tri par selection
+        public void tri_selection()
         {
-            Console.Write("   " + tab1[i]);
-        }
-
-        Console.WriteLine();
-    }
-
-    ///////////////////////////////////////////////////////////
-
-
-    public void ecrire_tab(int[] tab, int n)
-    {
-        Console.WriteLine("les elelment de tableau sont :");
-
-        for (int i = 0; i < n; i++)
-        {
-            Console.Write("   " + tab[i]);
-        }
-
-        Console.WriteLine();
-    }
-    //////////////////////////////////////////////////////////////////////////////
-    public void init_tab1()
-    {
-
-        tab1 = new int[n1];
-        Console.WriteLine("entrer les valeurs de tableau");
-        for (int i = 0; i < n1; i++)
-        {
-
-            Console.WriteLine("tab[" + i + "]=");
-            tab1[i] = int.Parse(Console.ReadLine());
-        }
-    }
-    //////////////////////////////////////////////////////////////////////////////
-    public void init_tab2()
-    {
-
-        tab2 = new int[n2];
-        Console.WriteLine("entrer les valeurs de tableau");
-        for (int i = 0; i < n2; i++)
-        {
-
-            Console.WriteLine("tab[" + i + "]=");
-            tab2[i] = int.Parse(Console.ReadLine());
-        }
-    }
-    //////////////////////////////////////////////////////////////////////
-    public void permut(ref int a, ref int b)
-    {
-        int c;
-        c = a;
-        a = b;
-        b = c;
-
-    }
-
-    /////////////////////////////////////////////////////////////////////
-
-    public void tri_selection()
-    {
-        for (int i = 0; i < n1 - 1; i++)
-        {
-            for (int j = i + 1; j < n1; j++)
+            for (int i = 0; i < n1 - 1; i++)
             {
-                if (tab1[j] < tab1[i])
+                for (int j = i + 1; j < n1; j++)
                 {
-                    permut(ref tab1[i], ref tab1[j]);
+                    if (tab1[j] < tab1[i])
+                    {
+                        permut(ref tab1[i], ref tab1[j]);
+                    }
+                }
+            }
+
+        }
+        ///////////////////////////////////////////////////
+		  //inverser un tableau
+        public void invers_tab(int[] tab_invers)
+        {
+            for (int i = 0; i < n1; i++)
+            {
+                tab_invers[n1 - 1 - i] = tab1[i];
+            }
+        }
+        //////////////////////////////////////////////////
+        //trouver le min et le max dans un tableau
+        public void max_min(ref int max, ref int min)
+        {
+            max = tab1[0];
+            min = tab1[0];
+            for (int i = 1; i < n1; i++)
+            {
+                if (max < tab1[i])
+                {
+                    max = tab1[i];
+                }
+                if (min > tab1[i])
+                {
+                    min = tab1[i];
                 }
             }
         }
-
-    }
-    ///////////////////////////////////////////////////
-    public void somme(int[] tab_somme)
-    {
-
-        if (n1 == n2)
-        {
-
-            for (int i = 0; i < n1; i++)
-            {
-                tab_somme[i] = tab1[i] + tab2[i];
-            }
-        }
-        else
-        {
-            throw new exception();
-
-        }
-
-    }
-    ///////////////////////////////////////////////////
-
-    public void invers_tab(int[] tab_invers)
-    {
-        for (int i = 0; i < n1; i++)
-        {
-            tab_invers[n1 - 1 - i] = tab1[i];
-        }
-    }
-    //////////////////////////////////////////////////
-    public void max_min(ref int max, ref int min)
-    {
-        max = tab1[0];
-        min = tab1[0];
-        for (int i = 1; i < n1; i++)
-        {
-            if (max < tab1[i])
-            {
-                max = tab1[i];
-            }
-            if (min > tab1[i])
-            {
-                min = tab1[i];
-            }
-        }
-    }
-    ///////////////
-
-
-}
-
